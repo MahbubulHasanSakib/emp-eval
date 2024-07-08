@@ -5,6 +5,7 @@ import { ApiConfigModule } from './api-config/api-config.module';
 import { EmployeeModule } from './employee/employee.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ApiConfigService } from './api-config/api-config.service';
+import { UploadModule } from './upload/upload.module';
 @Module({
   imports: [
     ApiConfigModule,
@@ -16,6 +17,7 @@ import { ApiConfigService } from './api-config/api-config.service';
       inject: [ApiConfigService],
     }),
     EmployeeModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
