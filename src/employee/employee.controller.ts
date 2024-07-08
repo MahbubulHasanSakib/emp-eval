@@ -31,6 +31,12 @@ export class EmployeeController {
   findAllEvaluation() {
     return this.employeeService.findAllEvaluation();
   }
+
+  @Get('user-evaluation/:userId')
+  findOneUserEvaluation(@Param('userId') userId: string) {
+    return this.employeeService.findOneUserEvaluation(userId);
+  }
+
   @Get('evaluation/:id')
   findOneEvaluation(@Param('id') id: string) {
     return this.employeeService.findOneEvaluation(id);

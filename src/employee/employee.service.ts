@@ -79,6 +79,31 @@ export class EmployeeService {
     return { data, message: 'An evaluation was found successfully.' };
   }
 
+  async findOneUserEvaluation(userId: string) {
+    const data = await this.evaluationModel.aggregate([
+      {
+        $match: {
+          'user.id': new Types.ObjectId(userId),
+        },
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'user.id',
+          foreignField: '_id',
+          as: 'user',
+        },
+      },
+      {
+        $unwind: '$user',
+      },
+    ]);
+    if (!data[0]) {
+      throw new NotFoundException('No evaluation found for this user.');
+    }
+    return { data: data[0], message: 'An evaluation was found successfully.' };
+  }
+
   async updateEvaluation(id: string, updateEvaluationDto: UpdateEvaluationDto) {
     const user: any = await this.evaluationModel.findById(id);
 
