@@ -45,6 +45,11 @@ export class CreateUserDto {
   @IsNotEmpty()
   department: string;
 
+  @ApiProperty({ example: 'url' })
+  @IsString()
+  @IsOptional()
+  profileImage: string;
+
   @ApiProperty({
     example: {
       id: '6645a81d57e3d75c37858feb',

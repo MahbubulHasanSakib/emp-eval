@@ -27,6 +27,9 @@ export class User {
   @Prop({ required: false, type: ManagerSchema })
   manager: Manager;
 
+  @Prop({ required: false, type: String })
+  profileImage: string;
+
   @Prop({ default: null })
   deletedAt: Date;
 }
