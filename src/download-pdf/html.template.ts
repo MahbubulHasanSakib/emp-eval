@@ -41,6 +41,7 @@ const commonCdn = `
 `;
 
 export const htmlTemplate = (key: string, values: any) => {
+  console.log(values?.achievedGoals);
   switch (key) {
     case keys.ALL_PAGE:
       return generatePage1(values);
@@ -115,8 +116,10 @@ const generatePage1 = ({
                   }</p></td>
                   <td class="border border-gray-300 p-2">Date</td>
                   <td class="border border-gray-300 p-2">
-  <p>${new Date().toLocaleDateString('en-GB', { timeZone: 'Asia/Dhaka' })}</p>
-</td>
+                    <p>${new Date(date).toLocaleDateString('en-GB', {
+                      timeZone: 'Asia/Dhaka',
+                    })}</p>
+                      </td>
                 </tr>
                 <tr>
                   <td class="border border-gray-300 p-2">Department</td>
@@ -202,10 +205,18 @@ const generatePage1 = ({
             </tr>
             <tr class="h-[200px]">
               <td colSpan="7" class="border border-gray-300 p-2 align-top">
-                ${achievedGoals
-                  ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                  ?.map((item) => `<p>${item}</p>`)
-                  ?.join('')}
+                ${
+                  achievedGoals &&
+                  achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                    ? achievedGoals
+                        ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                        ?.map((item) => `<p>${item}</p>`)
+                        ?.join('')
+                    : achievedGoals &&
+                      !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                    ? achievedGoals
+                    : ''
+                }
               </td>
             </tr>
             <tr>
@@ -215,10 +226,19 @@ const generatePage1 = ({
             </tr>
            <tr class="h-[200px]">
               <td colSpan="7" class="border border-gray-300 p-2 align-top">
-               ${nextReviewGoal
-                 ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                 ?.map((item) => `<p>${item}</p>`)
-                 ?.join('')}
+              
+               ${
+                 nextReviewGoal &&
+                 nextReviewGoal?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                   ? nextReviewGoal
+                       ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                       ?.map((item) => `<p>${item}</p>`)
+                       ?.join('')
+                   : nextReviewGoal &&
+                     !nextReviewGoal?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                   ? nextReviewGoal
+                   : ''
+               }
               </td>
             </tr>
             <tr>
@@ -228,10 +248,18 @@ const generatePage1 = ({
             </tr>
             <tr class="h-[200px]">
               <td colSpan="7" class="border border-gray-300 p-2 align-top">
-               ${strength
-                 ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                 ?.map((item) => `<p>${item}</p>`)
-                 ?.join('')}
+
+              ${
+                strength && strength?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? strength
+                      ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                      ?.map((item) => `<p>${item}</p>`)
+                      ?.join('')
+                  : strength && !strength?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? strength
+                  : ''
+              }
+               
               </td>
             </tr>
             <tr>
@@ -241,10 +269,17 @@ const generatePage1 = ({
             </tr>
             <tr class="h-[200px]">
               <td colSpan="7" class="border border-gray-300 p-2 align-top">
-               ${improvement
-                 ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                 ?.map((item) => `<p>${item}</p>`)
-                 ?.join('')}
+              ${
+                improvement && improvement?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? improvement
+                      ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                      ?.map((item) => `<p>${item}</p>`)
+                      ?.join('')
+                  : improvement &&
+                    !improvement?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? improvement
+                  : ''
+              }
               </td>
             </tr>
            
@@ -266,10 +301,21 @@ const generatePage1 = ({
             </tr>
             <tr class="h-[200px]">
               <td colSpan="7" class="border border-gray-300 p-2 align-top">
-               ${trainingRecommendation
-                 ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                 ?.map((item) => `<p>${item}</p>`)
-                 ?.join('')}
+               ${
+                 trainingRecommendation &&
+                 trainingRecommendation?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                   ? trainingRecommendation
+                       ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                       ?.map((item) => `<p>${item}</p>`)
+                       ?.join('')
+                   : trainingRecommendation &&
+                     !trainingRecommendation?.match(
+                       /\d+\..*?(?=\d+\.)|\d+\..*/g,
+                     )
+                   ? trainingRecommendation
+                   : ''
+               }
+               
               </td>
           </tr>
           <tr>
@@ -291,7 +337,7 @@ const generatePage1 = ({
           </tr>
              <tr>
               <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px] align-bottom">
-                  <p>${manager?.name}</p>
+                  <p>${manager?.name ? manager.name : ''}</p>
                   <p class="mt-3">LINE MANAGER</p>
                 </td>
                 <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
@@ -313,10 +359,17 @@ const generatePage1 = ({
                 </tr>
                 <tr class="h-[300px]">
                 <td colSpan="7" class="border border-gray-300 p-2 align-top">
-                  ${remarks
-                    ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                    ?.map((item) => `<p>${item}</p>`)
-                    ?.join('')}
+                 ${
+                   remarks && remarks?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                     ? remarks
+                         ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                         ?.map((item) => `<p>${item}</p>`)
+                         ?.join('')
+                     : remarks && !remarks?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                     ? remarks
+                     : ''
+                 }
+               
                 </td>
                 </tr>
                
