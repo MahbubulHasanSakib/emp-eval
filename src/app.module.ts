@@ -6,6 +6,7 @@ import { EmployeeModule } from './employee/employee.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ApiConfigService } from './api-config/api-config.service';
 import { UploadModule } from './upload/upload.module';
+import { DownloadPdfModule } from './download-pdf/download-pdf.module';
 @Module({
   imports: [
     ApiConfigModule,
@@ -18,6 +19,7 @@ import { UploadModule } from './upload/upload.module';
     }),
     EmployeeModule,
     UploadModule,
+    DownloadPdfModule,
   ],
   controllers: [AppController],
   providers: [AppService],
