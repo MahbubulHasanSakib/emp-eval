@@ -26,6 +26,7 @@ const commonStyle = `<style>
     border: 1px solid #ddd !important;
     padding: 8px !important;
   }
+
   .page-break {
     page-break-before: always;
   }
@@ -40,7 +41,6 @@ const commonCdn = `
 `;
 
 export const htmlTemplate = (key: string, values: any) => {
-  console.log(values?.managerSignature, values?.ceoSignature);
   switch (key) {
     case keys.ALL_PAGE:
       return generatePage1(values);
@@ -200,22 +200,21 @@ const generatePage1 = ({
                 ACHIEVED GOALS SET IN PREVIOUS REVIEW
               </td>
             </tr>
-            <tr>
-             <td colSpan="7" class="border border-gray-300 p-2">
-              ${achievedGoals
-                ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                .map((item) => `<p>${item}</p>`)
-                .join('')}
-            </td>
-
+            <tr class="h-[200px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top">
+                ${achievedGoals
+                  ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  .map((item) => `<p>${item}</p>`)
+                  .join('')}
+              </td>
             </tr>
             <tr>
               <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
                 GOALS FOR NEXT REVIEW PERIOD
               </td>
             </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
+           <tr class="h-[200px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top">
                ${nextReviewGoal
                  ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                  .map((item) => `<p>${item}</p>`)
@@ -227,8 +226,8 @@ const generatePage1 = ({
                 Strength
               </td>
             </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
+            <tr class="h-[200px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top">
                ${strength
                  ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                  .map((item) => `<p>${item}</p>`)
@@ -240,8 +239,8 @@ const generatePage1 = ({
                 Area of Improvement
               </td>
             </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
+            <tr class="h-[200px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top">
                ${improvement
                  ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                  .map((item) => `<p>${item}</p>`)
@@ -265,8 +264,8 @@ const generatePage1 = ({
                 Training / Development Recommendation
               </td>
             </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
+            <tr class="h-[200px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top">
                ${trainingRecommendation
                  ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                  .map((item) => `<p>${item}</p>`)
@@ -291,9 +290,9 @@ const generatePage1 = ({
             </td>
           </tr>
              <tr>
-                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px]">
+              <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px] align-bottom">
                   <p>${manager?.name}</p>
-                  <p>LINE MANAGER</p>
+                  <p class="mt-3">LINE MANAGER</p>
                 </td>
                 <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
                     <img src="${managerSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;">
@@ -303,7 +302,7 @@ const generatePage1 = ({
           </tbody>
         </table>
 
-          <div class="container mx-auto my-5">
+          <div class="">
              <h2 class=" font-bold text-center border p-2 border-black">EVALUATION & APPROVAL BY MD & CEO</h2>
               <table class="w-full mb-10">
               <tbody>
@@ -312,8 +311,8 @@ const generatePage1 = ({
                     REMARKS
                   </td>
                 </tr>
-                <tr>
-                <td colSpan="7" class="border border-gray-300 p-2">
+                <tr class="h-[300px]">
+                <td colSpan="7" class="border border-gray-300 p-2 align-top">
                   ${remarks
                     ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                     .map((item) => `<p>${item}</p>`)
@@ -340,9 +339,9 @@ const generatePage1 = ({
               </tr>
 
               <tr>
-                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px]">
+                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px] align-bottom">
                   <p>MIRZA FERDOUS OHID</p>
-                  <p>MD & CEO</p>
+                  <p class="mt-3">MD & CEO</p>
                 </td>
                  <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
                     <img src="${ceoSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;">
