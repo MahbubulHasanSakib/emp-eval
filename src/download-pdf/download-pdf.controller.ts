@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { DownloadPdfService } from './download-pdf.service';
 
 @ApiTags('Download PDF')
@@ -8,10 +8,9 @@ import { DownloadPdfService } from './download-pdf.service';
 export class DownloadPdfController {
   constructor(private downloadPdfService: DownloadPdfService) {}
 
-  @ApiBearerAuth()
   @Get('downoad-pages/:id')
   @ApiOperation({ summary: 'Download All Pages of Employeee Evaluation' })
-  async downloadPdfForStudnetNLabor(
+  async downloadEmpEvalPages(
     @Res() res: Response,
     @Param('id') id: string,
   ): Promise<void> {
