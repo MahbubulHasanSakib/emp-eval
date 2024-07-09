@@ -49,8 +49,8 @@ export class DownloadPdfService {
       ceoIncrement: ceoDetails?.salaryIncrement,
       ceoPositon: ceoDetails?.position,
       remarks: ceoDetails?.remarks,
-      managerSignature: '',
-      ceoSignature: '',
+      managerSignature: lineManagerDetails?.signature,
+      ceoSignature: ceoDetails?.signature,
       ques: ratings,
     };
 

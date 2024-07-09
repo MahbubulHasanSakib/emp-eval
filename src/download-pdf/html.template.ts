@@ -40,6 +40,7 @@ const commonCdn = `
 `;
 
 export const htmlTemplate = (key: string, values: any) => {
+  console.log(values?.managerSignature, values?.ceoSignature);
   switch (key) {
     case keys.ALL_PAGE:
       return generatePage1(values);
@@ -271,8 +272,8 @@ const generatePage1 = ({
                  .map((item) => `<p>${item}</p>`)
                  .join('')}
               </td>
-            </tr>
-            <tr>
+          </tr>
+          <tr>
             <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
               RECOMMENDATION
             </td>
@@ -289,53 +290,68 @@ const generatePage1 = ({
               </ul>
             </td>
           </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
-              
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
-                CEO POSITION
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
-                <p>${ceoPositon || ''}</p>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
-                REMARKS
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
-                <p>${remarks || ''}</p>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
-                Manager Signature
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
-                <p>${managerSignature || ''}</p>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
-                CEO Signature
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2">
-                <p>${ceoSignature || ''}</p>
-              </td>
-            </tr>
+             <tr>
+                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold" style="height: 100px;">
+                  <p>${manager?.name}</p>
+                  <p>LINE MANAGER</p>
+                </td>
+                <td colspan="4" class="border border-gray-300 p-2 text-center font-bold">
+                  <img src="${managerSignature}" alt="Manager Signature" style="max-width: 100%; max-height: 100px;">
+                  <p>SIGNATURE & DATE</p>
+                </td>
+              </tr>
           </tbody>
         </table>
+
+          <div class="container mx-auto my-5">
+             <h2 class=" font-bold text-center border p-2 border-black">EVALUATION & APPROVAL BY MD & CEO</h2>
+              <table class="w-full mb-10">
+              <tbody>
+                <tr>
+                  <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+                    REMARKS
+                  </td>
+                </tr>
+                <tr>
+                <td colSpan="7" class="border border-gray-300 p-2">
+                  ${remarks
+                    ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                    .map((item) => `<p>${item}</p>`)
+                    .join('')}
+                </td>
+                </tr>
+               
+               <tr>
+            <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+                FINAL EVALUATION
+            </td>
+          </tr>
+              <tr>
+                <td colSpan="7" class="border border-gray-300 p-2">
+                <ul>
+                    <li><strong>Salary Increment:</strong> ${
+                      ceoIncrement || ''
+                    }</li>
+                  </ul>
+                  <ul>
+                    <li><strong>Position:</strong> ${ceoPositon || ''}</li>
+                  </ul>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold" style="height: 100px;">
+                  <p>MIRZA FERDOUS OHID</p>
+                  <p>MD & CEO</p>
+                </td>
+                <td colspan="4" class="border border-gray-300 p-2 text-center font-bold">
+                  <img src="${ceoSignature}" alt="Manager Signature" style="max-width: 100%; max-height: 100px;">
+                  <p>SIGNATURE & DATE</p>
+                </td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
       </div>
     <!-- Page 3 Ends -->
     </body>
