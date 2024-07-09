@@ -86,7 +86,7 @@ export class Evaluation {
   @Prop({ required: true, type: [RatingSchema] })
   ratings: Rating[];
 
-  @Prop({ required: true, type: LineManager })
+  @Prop({ required: false, type: LineManager })
   lineManagerDetails: LineManager;
 
   @Prop({ required: false, type: CEO })
