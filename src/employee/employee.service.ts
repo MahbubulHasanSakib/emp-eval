@@ -32,7 +32,9 @@ export class EmployeeService {
 
   async findOne(id: string) {
     const data = await this.userModel.findById(id);
-
+    if (!data) {
+      throw new NotFoundException('No user found for this id.');
+    }
     return { data, message: 'A user was found successfully.' };
   }
 
@@ -80,28 +82,23 @@ export class EmployeeService {
   }
 
   async findOneUserEvaluation(userId: string) {
-    const data = await this.evaluationModel.aggregate([
-      {
-        $match: {
-          'user.id': new Types.ObjectId(userId),
-        },
-      },
-      {
-        $lookup: {
-          from: 'users',
-          localField: 'user.id',
-          foreignField: '_id',
-          as: 'user',
-        },
-      },
-      {
-        $unwind: '$user',
-      },
-    ]);
-    if (!data[0]) {
-      throw new NotFoundException('No evaluation found for this user.');
+    const userInfo = await this.userModel.findById(userId);
+    if (!userInfo) {
+      throw new NotFoundException('No user found for this id.');
     }
-    return { data: data[0], message: 'An evaluation was found successfully.' };
+    const evaluation = await this.evaluationModel.findOne({
+      'user.id': userId,
+    });
+    if (!evaluation) {
+      return {
+        data: { user: userInfo },
+        message: 'User found but evaluation not found',
+      };
+    } else {
+      const { user, ...evalData } = evaluation.toJSON();
+      let data = { user: userInfo, ...evalData };
+      return { data, message: 'An evaluation was found successfully.' };
+    }
   }
 
   async updateEvaluation(id: string, updateEvaluationDto: UpdateEvaluationDto) {
