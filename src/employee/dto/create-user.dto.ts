@@ -42,8 +42,8 @@ export class CreateUserDto {
 
   @ApiProperty({ example: 'Technology' })
   @IsString()
-  @IsNotEmpty()
-  department: string;
+  @IsOptional()
+  department?: string;
 
   @ApiProperty({ example: 'url' })
   @IsString()
