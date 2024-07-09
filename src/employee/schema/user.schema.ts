@@ -18,10 +18,10 @@ export class User {
   @Prop({ required: true })
   title: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   employeeID: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   department: string;
 
   @Prop({ required: false, type: ManagerSchema })

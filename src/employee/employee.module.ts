@@ -20,5 +20,6 @@ import { Evaluation, EvaluationSchema } from './schema/evaluation.schema';
   ],
   providers: [EmployeeService],
   controllers: [EmployeeController],
+  exports: [EmployeeService],
 })
 export class EmployeeModule {}
