@@ -115,11 +115,8 @@ const generatePage1 = ({
                   }</p></td>
                   <td class="border border-gray-300 p-2">Date</td>
                   <td class="border border-gray-300 p-2">
-                <p>${new Date().toLocaleString('en-US', {
-                  timeZone: 'Asia/Dhaka',
-                })}</p>
-                </td>
-
+  <p>${new Date().toLocaleDateString('en-GB', { timeZone: 'Asia/Dhaka' })}</p>
+</td>
                 </tr>
                 <tr>
                   <td class="border border-gray-300 p-2">Department</td>
@@ -298,7 +295,7 @@ const generatePage1 = ({
                   <p class="mt-3">LINE MANAGER</p>
                 </td>
                 <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
-                    <img src="${managerSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;">
+                    <img src="${managerSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 80px;" class="h-[50px]">
                     <p>SIGNATURE & DATE</p>
                 </td>
               </tr>
@@ -347,7 +344,7 @@ const generatePage1 = ({
                   <p class="mt-3">MD & CEO</p>
                 </td>
                  <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
-                    <img src="${ceoSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;">
+                    <img src="${ceoSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;" class="h-[50px]">
                     <p>SIGNATURE & DATE</p>
                 </td>
               </tr>
