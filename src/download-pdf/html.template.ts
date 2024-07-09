@@ -291,13 +291,13 @@ const generatePage1 = ({
             </td>
           </tr>
              <tr>
-                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold" style="height: 100px;">
+                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px]">
                   <p>${manager?.name}</p>
                   <p>LINE MANAGER</p>
                 </td>
-                <td colspan="4" class="border border-gray-300 p-2 text-center font-bold">
-                  <img src="${managerSignature}" alt="Manager Signature" style="max-width: 100%; max-height: 100px;">
-                  <p>SIGNATURE & DATE</p>
+                <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
+                    <img src="${managerSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;">
+                    <p>SIGNATURE & DATE</p>
                 </td>
               </tr>
           </tbody>
@@ -340,13 +340,13 @@ const generatePage1 = ({
               </tr>
 
               <tr>
-                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold" style="height: 100px;">
+                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px]">
                   <p>MIRZA FERDOUS OHID</p>
                   <p>MD & CEO</p>
                 </td>
-                <td colspan="4" class="border border-gray-300 p-2 text-center font-bold">
-                  <img src="${ceoSignature}" alt="Manager Signature" style="max-width: 100%; max-height: 100px;">
-                  <p>SIGNATURE & DATE</p>
+                 <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
+                    <img src="${ceoSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;">
+                    <p>SIGNATURE & DATE</p>
                 </td>
               </tr>
               </tbody>
