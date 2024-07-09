@@ -32,6 +32,7 @@
     "class-validator": "^0.14.1",
     "mongoose": "^8.4.5",
     "nestjs-multer-extended": "^1.4.2",
+    "puppeteer": "22.7.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },
