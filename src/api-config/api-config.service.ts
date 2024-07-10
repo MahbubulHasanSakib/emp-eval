@@ -13,6 +13,14 @@ export class ApiConfigService {
     return this.configService.get('PORT');
   }
 
+  get getJwtSecret() {
+    return this.configService.get('JWT_SECRET');
+  }
+
+  get getJwtExpire() {
+    return this.configService.get('JWT_EXPIRE');
+  }
+
   get getBucket() {
     return this.configService.get('BUCKET');
   }

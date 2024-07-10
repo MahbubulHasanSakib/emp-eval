@@ -9,6 +9,12 @@ class EnvironmentVariables {
   PORT: number;
 
   @IsString()
+  JWT_SECRET: string;
+
+  @IsString()
+  JWT_EXPIRE: string;
+
+  @IsString()
   BUCKET: string;
 
   @IsString()
