@@ -41,7 +41,6 @@ const commonCdn = `
 `;
 
 export const htmlTemplate = (key: string, values: any) => {
-  console.log(values?.achievedGoals);
   switch (key) {
     case keys.ALL_PAGE:
       return generatePage1(values);
@@ -163,7 +162,7 @@ const generatePage1 = ({
                   ?.map(
                     (category) => `
                 <tr key="${category?.ques}">
-                  <td class="border border-gray-200 p-2">${
+                  <td class="border border-gray-200 p-2 font-bold">${
                     category?.ques || ''
                   }</td>
                   ${[1, 2, 3, 4, 5]
@@ -178,7 +177,7 @@ const generatePage1 = ({
                 </tr>
                 <tr key="${category?.ques}-comments">
                   <td class="border border-gray-200 p-2">Comments</td>
-                  <td class="border border-gray-200 p-2" colSpan="5">
+                  <td class="border border-gray-200 p-2">
                     <p>${category?.comments || ''}</p>
                   </td>
                 </tr>
@@ -203,8 +202,8 @@ const generatePage1 = ({
                 ACHIEVED GOALS SET IN PREVIOUS REVIEW
               </td>
             </tr>
-            <tr class="h-[200px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top">
+            <tr class="h-[300px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
                 ${
                   achievedGoals &&
                   achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -224,8 +223,8 @@ const generatePage1 = ({
                 GOALS FOR NEXT REVIEW PERIOD
               </td>
             </tr>
-           <tr class="h-[200px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top">
+           <tr class="h-[305px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
               
                ${
                  nextReviewGoal &&
@@ -246,8 +245,8 @@ const generatePage1 = ({
                 Strength
               </td>
             </tr>
-            <tr class="h-[200px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top">
+            <tr class="h-[120px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
 
               ${
                 strength && strength?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -267,8 +266,8 @@ const generatePage1 = ({
                 Area of Improvement
               </td>
             </tr>
-            <tr class="h-[200px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top">
+            <tr class="h-[120px]">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
               ${
                 improvement && improvement?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                   ? improvement
@@ -300,7 +299,7 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr class="h-[200px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top">
+              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
                ${
                  trainingRecommendation &&
                  trainingRecommendation?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -357,8 +356,8 @@ const generatePage1 = ({
                     REMARKS
                   </td>
                 </tr>
-                <tr class="h-[300px]">
-                <td colSpan="7" class="border border-gray-300 p-2 align-top">
+                <tr class="h-[310px]">
+                <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
                  ${
                    remarks && remarks?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                      ? remarks
