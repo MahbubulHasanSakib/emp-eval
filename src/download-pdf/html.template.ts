@@ -135,11 +135,11 @@ const generatePage1 = ({
             <table class="table-auto w-full border-collapse">
               <thead>
                 <tr>
-                  <th class="border border-black p-2">Category</th>
+                  <th class="border border-black p-2 !font-normal !text-xs">Category</th>
                   ${[1, 2, 3, 4, 5]
                     ?.map(
                       (num) => `
-                  <th class="border border-black p-2">${num} = ${
+                  <th class="border border-black p-2 !font-normal !text-xs" colSpan="1">${num} = ${
                         ['Poor', 'Fair', 'Satisfactory', 'Good', 'Excellent'][
                           num - 1
                         ]
@@ -168,9 +168,9 @@ const generatePage1 = ({
                     ?.join('')}
                 </tr>
                 <tr key="${category?.ques}-comments">
-                  <td class="border border-black p-2">Comments</td>
+                  <td class="border border-black p-2 !text-xs">Comments</td>
                   <td class="border border-black p-2" colSpan="5">
-                    <p>${category?.comments || ''}</p>
+                    <p class="!text-xs">${category?.comments || ''}</p>
                   </td>
                 </tr>
                 `,
@@ -186,7 +186,7 @@ const generatePage1 = ({
     <!-- Page 2 Starts -->
     <div class="page-break"></div>
     <div class="container mx-auto my-5">
-        <h2 class=" font-bold text-center border px-2 border-black">EVALUATION & RECOMMENDATION FOR LINE MANAGER</h2>
+        <h2 class=" font-bold text-center px-2 border-l border-l-black border-r border-r-black border-t border-t-black">EVALUATION & RECOMMENDATION FOR LINE MANAGER</h2>
         <table class="w-full mb-10">
           <tbody>
             <tr>
@@ -195,7 +195,7 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr class="h-[300px]">
-              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
                 ${
                   achievedGoals &&
                   achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -216,7 +216,7 @@ const generatePage1 = ({
               </td>
             </tr>
            <tr class="h-[305px]">
-              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
               
                ${
                  nextReviewGoal &&
@@ -238,7 +238,7 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr class="h-[120px]">
-              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
 
               ${
                 strength && strength?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -259,7 +259,7 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr class="h-[120px]">
-              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
               ${
                 improvement && improvement?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                   ? improvement
@@ -291,7 +291,7 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr class="h-[200px]">
-              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
                ${
                  trainingRecommendation &&
                  trainingRecommendation?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -340,7 +340,7 @@ const generatePage1 = ({
         </table>
 
           <div class="">
-             <h2 class="font-bold text-center border px-2 border-black">EVALUATION & APPROVAL BY MD & CEO</h2>
+             <h2 class="font-bold text-center px-2 border-l border-l-black border-r border-r-black border-t border-t-black">EVALUATION & APPROVAL BY MD & CEO</h2>
               <table class="w-full mb-10 border border-black">
               <tbody>
                 <tr>
@@ -349,7 +349,7 @@ const generatePage1 = ({
                   </td>
                 </tr>
                 <tr class="h-[310px]">
-                <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
+                <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
                  ${
                    remarks && remarks?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                      ? remarks
