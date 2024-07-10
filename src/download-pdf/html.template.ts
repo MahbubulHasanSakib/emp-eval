@@ -7,7 +7,7 @@ export const keys = {
 
 const commonStyle = `<style>
   body {
-    font-size: 10px !important;
+    font-size: 14px !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -20,11 +20,7 @@ const commonStyle = `<style>
   table {
     width: 100% !important;
     border-collapse: collapse !important;
-    font-size: 10px !important;
-  }
-  th, td {
-    border: 1px solid #ddd !important;
-    padding: 8px !important;
+    font-size: 12px !important;
   }
 
   .page-break {
@@ -32,7 +28,7 @@ const commonStyle = `<style>
   }
 
   .container {
-    padding: 24px 16px;
+    padding: 0px 16px;
   }
 </style>`;
 
@@ -86,7 +82,7 @@ const generatePage1 = ({
     <body class="px-8 py-4">
       <div class="max-w-6xl mx-auto my-5">
         <!-- Page Header section -->
-        <div class="flex justify-between px-6">
+        <div class="flex justify-between flex-wrap px-6">
           <img src="https://employee-performance-review.vercel.app/_next/image?url=%2Flogo.png&w=256&q=75" alt="HDML" width="200" height="200" />
           <h1 class="font-bold">HawkEyes Digital Monitoring Limited</h1>
         </div>
@@ -95,44 +91,40 @@ const generatePage1 = ({
         <div>
           <div class="container mx-auto">
             <h2 class="font-bold border-black my-0">Employee Evaluation Form</h2>
-            <h2 class=" font-bold text-center border p-2 border-black mb-2">EMPLOYEE INFORMATION</h2>
+            <h2 class=" font-bold text-center border px-2 border-black mb-2">EMPLOYEE INFORMATION</h2>
             <table class="w-full mb-4">
               <tbody>
                 <tr>
-                  <td class="border border-gray-300 p-2">Name</td>
-                  <td class="border border-gray-300 p-2"><p>${
-                    name || ''
-                  }</p></td>
-                  <td class="border border-gray-300 p-2">Employee ID</td>
-                  <td class="border border-gray-300 p-2"><p>${
+                  <td class="border border-black p-2 font-bold">Name</td>
+                  <td class="border border-black p-2"><p>${name || ''}</p></td>
+                  <td class="border border-black p-2 font-bold">Employee ID</td>
+                  <td class="border border-black p-2"><p>${
                     employeeID || ''
                   }</p></td>
                 </tr>
                 <tr>
-                  <td class="border border-gray-300 p-2">Job Title</td>
-                  <td class="border border-gray-300 p-2"><p>${
-                    title || ''
-                  }</p></td>
-                  <td class="border border-gray-300 p-2">Date</td>
-                  <td class="border border-gray-300 p-2">
+                  <td class="border border-black p-2 font-bold">Job Title</td>
+                  <td class="border border-black p-2"><p>${title || ''}</p></td>
+                  <td class="border border-black p-2 font-bold">Date</td>
+                  <td class="border border-black p-2">
                     <p>${new Date(date).toLocaleDateString('en-GB', {
                       timeZone: 'Asia/Dhaka',
                     })}</p>
                       </td>
                 </tr>
                 <tr>
-                  <td class="border border-gray-300 p-2">Department</td>
-                  <td class="border border-gray-300 p-2"><p>${
+                  <td class="border border-black p-2 font-bold">Department</td>
+                  <td class="border border-black p-2"><p>${
                     department || ''
                   }</p></td>
-                  <td class="border border-gray-300 p-2">Manager Name</td>
-                  <td class="border border-gray-300 p-2"><p>${
+                  <td class="border border-black p-2 font-bold">Manager Name</td>
+                  <td class="border border-black p-2"><p>${
                     manager?.name || ''
                   }</p></td>
                 </tr>
                 <tr>
-                  <td class="border border-gray-300 p-2">Review Period</td>
-                  <td class="border border-gray-300 p-2"><p>${
+                  <td class="border border-black p-2 font-bold">Review Period</td>
+                  <td class="border border-black p-2"><p>${
                     reviewPeriod || ''
                   }</p></td>
                 </tr>
@@ -140,14 +132,14 @@ const generatePage1 = ({
             </table>
 
             <h2 class=" font-bold text-center border p-0 border-black mb-2">RATINGS</h2>
-            <table class="table-auto w-full border-collapse border border-gray-200">
+            <table class="table-auto w-full border-collapse">
               <thead>
                 <tr>
-                  <th class="border border-gray-200 p-2">Category</th>
+                  <th class="border border-black p-2">Category</th>
                   ${[1, 2, 3, 4, 5]
                     ?.map(
                       (num) => `
-                  <th class="border border-gray-200 p-2">${num} = ${
+                  <th class="border border-black p-2">${num} = ${
                         ['Poor', 'Fair', 'Satisfactory', 'Good', 'Excellent'][
                           num - 1
                         ]
@@ -162,13 +154,13 @@ const generatePage1 = ({
                   ?.map(
                     (category) => `
                 <tr key="${category?.ques}">
-                  <td class="border border-gray-200 p-2 font-bold">${
+                  <td class="border border-black p-2 font-bold">${
                     category?.ques || ''
                   }</td>
                   ${[1, 2, 3, 4, 5]
                     ?.map(
                       (value) => `
-                  <td class="border border-gray-200 p-2 text-center">
+                  <td class="border border-black p-2 text-center">
                     <p>${category?.ans == value ? '✔' : ''}</p>
                   </td>
                   `,
@@ -176,8 +168,8 @@ const generatePage1 = ({
                     ?.join('')}
                 </tr>
                 <tr key="${category?.ques}-comments">
-                  <td class="border border-gray-200 p-2">Comments</td>
-                  <td class="border border-gray-200 p-2">
+                  <td class="border border-black p-2">Comments</td>
+                  <td class="border border-black p-2" colSpan="5">
                     <p>${category?.comments || ''}</p>
                   </td>
                 </tr>
@@ -194,16 +186,16 @@ const generatePage1 = ({
     <!-- Page 2 Starts -->
     <div class="page-break"></div>
     <div class="container mx-auto my-5">
-        <h2 class=" font-bold text-center border p-2 border-black">EVALUATION & RECOMMENDATION FOR LINE MANAGER</h2>
+        <h2 class=" font-bold text-center border px-2 border-black">EVALUATION & RECOMMENDATION FOR LINE MANAGER</h2>
         <table class="w-full mb-10">
           <tbody>
             <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
                 ACHIEVED GOALS SET IN PREVIOUS REVIEW
               </td>
             </tr>
             <tr class="h-[300px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
                 ${
                   achievedGoals &&
                   achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -219,12 +211,12 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
                 GOALS FOR NEXT REVIEW PERIOD
               </td>
             </tr>
            <tr class="h-[305px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
               
                ${
                  nextReviewGoal &&
@@ -241,12 +233,12 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
                 Strength
               </td>
             </tr>
             <tr class="h-[120px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
 
               ${
                 strength && strength?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -262,12 +254,12 @@ const generatePage1 = ({
               </td>
             </tr>
             <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
                 Area of Improvement
               </td>
             </tr>
             <tr class="h-[120px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
               ${
                 improvement && improvement?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                   ? improvement
@@ -291,15 +283,15 @@ const generatePage1 = ({
     <!-- Page 3 Starts -->
     <div class="page-break"></div>
     <div class="container mx-auto my-5">
-        <table class="w-full mb-10">
+        <table class="w-full mb-10 border border-black">
           <tbody>
            <tr>
-              <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
                 Training / Development Recommendation
               </td>
             </tr>
             <tr class="h-[200px]">
-              <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
                ${
                  trainingRecommendation &&
                  trainingRecommendation?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
@@ -318,12 +310,12 @@ const generatePage1 = ({
               </td>
           </tr>
           <tr>
-            <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+            <td colSpan="7" class="border border-black p-2 text-center font-bold">
               RECOMMENDATION
             </td>
           </tr>
           <tr>
-            <td colSpan="7" class="border border-gray-300 p-2">
+            <td colSpan="7" class="border border-black p-2">
               <ul>
                 <li><strong>Position:</strong> ${position || ''}</li>
               </ul>
@@ -335,11 +327,11 @@ const generatePage1 = ({
             </td>
           </tr>
              <tr>
-              <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px] align-bottom">
+              <td colspan="3" class="border-r border-black p-2 text-center font-bold h-[100px] align-bottom">
                   <p>${manager?.name ? manager.name : ''}</p>
                   <p class="mt-3">LINE MANAGER</p>
                 </td>
-                <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
+                <td colspan="4" class="h-[100px] p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
                     <img src="${managerSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 80px;" class="h-[50px]">
                     <p>SIGNATURE & DATE</p>
                 </td>
@@ -348,16 +340,16 @@ const generatePage1 = ({
         </table>
 
           <div class="">
-             <h2 class=" font-bold text-center border p-2 border-black">EVALUATION & APPROVAL BY MD & CEO</h2>
-              <table class="w-full mb-10">
+             <h2 class="font-bold text-center border px-2 border-black">EVALUATION & APPROVAL BY MD & CEO</h2>
+              <table class="w-full mb-10 border border-black">
               <tbody>
                 <tr>
-                  <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+                  <td colSpan="7" class="border border-black p-2 text-center font-bold">
                     REMARKS
                   </td>
                 </tr>
                 <tr class="h-[310px]">
-                <td colSpan="7" class="border border-gray-300 p-2 align-top overflow-hidden">
+                <td colSpan="7" class="border border-black p-2 align-top overflow-hidden">
                  ${
                    remarks && remarks?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                      ? remarks
@@ -373,12 +365,12 @@ const generatePage1 = ({
                 </tr>
                
                <tr>
-            <td colSpan="7" class="border border-gray-300 p-2 text-center font-bold">
+            <td colSpan="7" class="border border-black p-2 text-center font-bold">
                 FINAL EVALUATION
             </td>
           </tr>
               <tr>
-                <td colSpan="7" class="border border-gray-300 p-2">
+                <td colSpan="7" class="border border-black p-2">
                 <ul>
                     <li><strong>Salary Increment:</strong> ${
                       ceoIncrement || ''
@@ -391,11 +383,11 @@ const generatePage1 = ({
               </tr>
 
               <tr>
-                <td colspan="3" class="border border-gray-300 p-2 text-center font-bold h-[100px] align-bottom">
+                <td colspan="3" class="border-r border-black p-2 text-center font-bold h-[100px] align-bottom">
                   <p>MIRZA FERDOUS OHID</p>
                   <p class="mt-3">MD & CEO</p>
                 </td>
-                 <td colspan="4" class="h-[100px] border border-gray-300 p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
+                 <td colspan="4" class="h-[100px] p-2 text-center font-bold flex flex-col justify-center items-center gap-y-2">
                     <img src="${ceoSignature}" alt="CEO Signature" style="max-width: 200px; max-height: 100px;" class="h-[50px]">
                     <p>SIGNATURE & DATE</p>
                 </td>
