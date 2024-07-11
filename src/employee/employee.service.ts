@@ -20,12 +20,14 @@ export class EmployeeService {
   ) {}
   async create(createUserDto: CreateUserDto) {
     const data = (await this.userModel.create(createUserDto)).toJSON();
-    console.log({ data });
     return { data, message: 'User created successfully.' };
   }
 
   async findAll() {
-    const data = await this.userModel.find({ deletedAt: null });
+    const data = await this.userModel.find({
+      deletedAt: null,
+      employeeID: { $ne: '1' },
+    });
 
     return { data, message: 'Successfully found all users.' };
   }

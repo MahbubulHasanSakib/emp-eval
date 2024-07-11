@@ -189,7 +189,7 @@ export class CreateEvaluationDto {
   @ApiProperty({ type: [CreateRatingDto], description: 'Ratings' })
   ratings: CreateRatingDto[];
 
-  @IsNotEmpty()
+  @IsOptional()
   @ValidateNested()
   @Type(() => CreateLineManagerDto)
   @ApiProperty({
