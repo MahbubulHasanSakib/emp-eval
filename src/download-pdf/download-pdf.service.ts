@@ -33,6 +33,9 @@ export class DownloadPdfService {
 
     const downloadDataValues = {
       name: user?.name,
+      achievedGoalsCurrentYear: user?.achievedGoalsCurrentYear,
+      setNextReviewGoal: user?.setNextReviewGoal,
+      empSignature: user?.empSignature,
       employeeID: user?.employeeID,
       title: user?.title,
       department: user?.department,

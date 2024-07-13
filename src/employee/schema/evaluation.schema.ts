@@ -41,10 +41,10 @@ export class LineManager {
   @Prop({ required: false, type: String })
   trainingRecommendation: string;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: false, type: String })
   position: string;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: false, type: String })
   salaryIncrement: string;
 
   @Prop({ required: false, type: String })
@@ -59,10 +59,10 @@ export class CEO {
   @Prop({ required: false, type: String })
   remarks: string;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: false, type: String })
   position: string;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: false, type: String })
   salaryIncrement: string;
 
   @Prop({ required: false, type: String })
