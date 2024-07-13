@@ -10,23 +10,23 @@ import {
 export class ManagerDto {
   @ApiProperty()
   @IsMongoId()
-  @IsNotEmpty()
+  @IsOptional()
   id: string;
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   name: string;
 }
 export class CreateUserDto {
   @ApiProperty({ example: 'Mahbubul' })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   name: string;
 
   @ApiProperty({ example: 'Jr. Backend' })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   title: string;
 
   @ApiProperty({ example: '01' })

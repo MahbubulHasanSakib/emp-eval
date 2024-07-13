@@ -10,12 +10,12 @@ import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
 class UserDto {
-  @IsNotEmpty()
+  @IsOptional()
   @IsMongoId()
   @ApiProperty({ example: '60d0fe4f5311236168a109ca', description: 'User ID' })
   id: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: 'John Doe', description: 'User name' })
   name: string;
@@ -38,7 +38,7 @@ class UserDto {
 
 // Rating DTO
 export class CreateRatingDto {
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({
     example: 'How would you rate the service?',
@@ -46,7 +46,7 @@ export class CreateRatingDto {
   })
   ques: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: 'Excellent', description: 'Answer' })
   ans: string;
@@ -179,25 +179,25 @@ export class CreateCEODto {
 
 // Evaluation DTO
 export class CreateEvaluationDto {
-  @IsNotEmpty()
+  @IsOptional()
   @ValidateNested()
   @Type(() => UserDto)
   @ApiProperty({ type: UserDto, description: 'User details' })
   user: UserDto;
 
-  @IsNotEmpty()
+  @IsOptional()
   @ApiProperty({
     example: '2024-07-01T00:00:00.000Z',
     description: 'Date of evaluation',
   })
   date: Date;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: 'Q2 2024', description: 'Review period' })
   reviewPeriod: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateRatingDto)
@@ -223,7 +223,7 @@ export class CreateEvaluationDto {
   })
   ceoDetails?: CreateCEODto;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({
     example: '01',
