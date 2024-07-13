@@ -66,6 +66,7 @@ export class EmployeeService {
 
   async createEvaluation(createEvaluationDto: CreateEvaluationDto) {
     const { user, ...evals } = createEvaluationDto ?? {};
+
     const {
       achievedGoalsCurrentYear,
       empSignature,
@@ -130,22 +131,18 @@ export class EmployeeService {
 
     const { user: createEvalUser, ...evals } = updateEvaluationDto ?? {};
 
-    const {
-      achievedGoalsCurrentYear,
-      empSignature,
-      setNextReviewGoal,
-      ...restUserProps
-    } = createEvalUser ?? {};
-
-    await this.userModel.findByIdAndUpdate(user?.id, {
-      achievedGoalsCurrentYear,
-      empSignature,
-      setNextReviewGoal,
+    const updUser = await this.userModel.findByIdAndUpdate(createEvalUser?.id, {
+      achievedGoalsCurrentYear: createEvalUser?.achievedGoalsCurrentYear,
+      empSignature: createEvalUser?.empSignature,
+      setNextReviewGoal: createEvalUser?.setNextReviewGoal,
     });
 
     const data = await this.evaluationModel.findByIdAndUpdate(
       id,
-      { user: { ...restUserProps }, ...evals },
+      {
+        user: { id: createEvalUser?.id, name: createEvalUser?.name },
+        ...evals,
+      },
       {
         new: true,
       },
