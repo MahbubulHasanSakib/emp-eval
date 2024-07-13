@@ -131,6 +131,59 @@ const generatePage1 = ({
               </tbody>
             </table>
 
+          <h2 class="border-l border-l-black border-r border-r-black border-t border-t-black h-[30px] bg-black"></h2>
+          <table class="w-full mb-10">
+          <tbody>
+            <tr>
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
+                SET GOALS 
+              </td>
+            </tr>
+            <tr class="h-[300px]">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
+                
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="7" class="border border-black p-2 text-center font-bold">
+                ACHIEVED GOALS
+              </td>
+            </tr>
+           <tr class="h-[305px]">
+              <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
+              ${
+                achievedGoals &&
+                achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? achievedGoals
+                      ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                      ?.map((item) => `<p>${item}</p>`)
+                      ?.join('')
+                  : achievedGoals &&
+                    !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? achievedGoals
+                  : ''
+              }
+              </td>
+            </tr>
+            <tr>
+               <td colSpan="1" class="border border-black p-2 text-center font-bold w-1/2 h-[50px]">
+                EMPLOYEE SIGNATURE & DATE
+              </td>
+               <td colSpan="1" class="border border-black p-2 text-center w-1/2 h-[50px]">
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          </div>
+        </div>
+      </div>
+      <!-- Page 1 Ends -->
+
+
+      <!-- Page 2 Ends -->
+          <div class="page-break"></div>
+          <div class="container mx-auto my-5">
             <h2 class=" font-bold text-center border p-0 border-black mb-2">RATINGS</h2>
             <table class="table-auto w-full border-collapse">
               <thead>
@@ -179,11 +232,9 @@ const generatePage1 = ({
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
-      <!-- Page 1 Ends -->
+      <!-- Page 2 Ends -->
 
-    <!-- Page 2 Starts -->
+    <!-- Page 3 Starts -->
     <div class="page-break"></div>
     <div class="container mx-auto my-5">
         <h2 class=" font-bold text-center px-2 border-l border-l-black border-r border-r-black border-t border-t-black">EVALUATION & RECOMMENDATION FOR LINE MANAGER</h2>
@@ -197,16 +248,17 @@ const generatePage1 = ({
             <tr class="h-[300px]">
               <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
                 ${
-                  achievedGoals &&
-                  achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                    ? achievedGoals
-                        ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                        ?.map((item) => `<p>${item}</p>`)
-                        ?.join('')
-                    : achievedGoals &&
-                      !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                    ? achievedGoals
-                    : ''
+                  // achievedGoals &&
+                  // achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  //   ? achievedGoals
+                  //       ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  //       ?.map((item) => `<p>${item}</p>`)
+                  //       ?.join('')
+                  //   : achievedGoals &&
+                  //     !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  //   ? achievedGoals
+                  //   : ''
+                  ''
                 }
               </td>
             </tr>
@@ -278,9 +330,9 @@ const generatePage1 = ({
         </table>
       </div>
 
-    <!-- Page 2 Ends -->
+    <!-- Page 3 Ends -->
 
-    <!-- Page 3 Starts -->
+    <!-- Page 4 Starts -->
     <div class="page-break"></div>
     <div class="container mx-auto my-5">
         <table class="w-full mb-10 border border-black">
@@ -396,7 +448,7 @@ const generatePage1 = ({
           </table>
         </div>
       </div>
-    <!-- Page 3 Ends -->
+    <!-- Page 4 Ends -->
     </body>
     </html>
   `;
