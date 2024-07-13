@@ -127,9 +127,25 @@ export class EmployeeService {
     if (!user) {
       throw new NotFoundException('No evaluation found for this id.');
     }
+
+    const { user: createEvalUser, ...evals } = updateEvaluationDto ?? {};
+
+    const {
+      achievedGoalsCurrentYear,
+      empSignature,
+      setNextReviewGoal,
+      ...restUserProps
+    } = user ?? {};
+
+    await this.userModel.findByIdAndUpdate(user?.id, {
+      achievedGoalsCurrentYear,
+      empSignature,
+      setNextReviewGoal,
+    });
+
     const data = await this.evaluationModel.findByIdAndUpdate(
       id,
-      updateEvaluationDto,
+      { user: { ...restUserProps }, evals },
       {
         new: true,
       },
