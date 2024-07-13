@@ -3,19 +3,19 @@ import * as mongoose from 'mongoose';
 
 @Schema({ timestamps: false, versionKey: false, _id: false })
 export class Manager {
-  @Prop({ required: true })
+  @Prop({ required: false })
   id: mongoose.Schema.Types.ObjectId;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   name: string;
 }
 export const ManagerSchema = SchemaFactory.createForClass(Manager);
 @Schema({ timestamps: true, versionKey: false })
 export class User {
-  @Prop({ required: true })
+  @Prop({ required: false })
   name: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   title: string;
 
   @Prop({ required: false })

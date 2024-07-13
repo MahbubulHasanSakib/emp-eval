@@ -3,20 +3,20 @@ import * as mongoose from 'mongoose';
 
 @Schema({ timestamps: false, versionKey: false, _id: false })
 export class Employee {
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  @Prop({ required: false, type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   id: mongoose.Schema.Types.ObjectId;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   name: string;
 }
 
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);
 @Schema({ timestamps: false, versionKey: false, _id: false })
 export class Rating {
-  @Prop({ required: true })
+  @Prop({ required: false })
   ques: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   ans: string;
 
   @Prop({ required: false })
@@ -74,16 +74,16 @@ export class CEO {
 
 @Schema({ timestamps: true, versionKey: false })
 export class Evaluation {
-  @Prop({ required: true, type: EmployeeSchema, ref: 'User' })
+  @Prop({ required: false, type: EmployeeSchema, ref: 'User' })
   user: Employee;
 
-  @Prop({ required: true, type: Date })
+  @Prop({ required: false, type: Date })
   date: Date;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   reviewPeriod: string;
 
-  @Prop({ required: true, type: [RatingSchema] })
+  @Prop({ required: false, type: [RatingSchema] })
   ratings: Rating[];
 
   @Prop({ required: false, type: LineManager })
@@ -92,7 +92,7 @@ export class Evaluation {
   @Prop({ required: false, type: CEO })
   ceoDetails: CEO;
 
-  @Prop({ type: String, ref: 'User', required: true })
+  @Prop({ type: String, ref: 'User', required: false })
   submittedByEmpID: string;
 
   @Prop({ type: String, ref: 'User', required: false })
