@@ -135,7 +135,7 @@ export class EmployeeService {
       empSignature,
       setNextReviewGoal,
       ...restUserProps
-    } = user ?? {};
+    } = createEvalUser ?? {};
 
     await this.userModel.findByIdAndUpdate(user?.id, {
       achievedGoalsCurrentYear,
@@ -145,7 +145,7 @@ export class EmployeeService {
 
     const data = await this.evaluationModel.findByIdAndUpdate(
       id,
-      { user: { ...restUserProps }, evals },
+      { user: { ...restUserProps }, ...evals },
       {
         new: true,
       },
