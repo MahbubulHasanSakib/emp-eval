@@ -65,9 +65,27 @@ export class EmployeeService {
   }
 
   async createEvaluation(createEvaluationDto: CreateEvaluationDto) {
+    const { user, ...evals } = createEvaluationDto ?? {};
+    const {
+      achievedGoalsCurrentYear,
+      empSignature,
+      setNextReviewGoal,
+      ...restUserProps
+    } = user ?? {};
+
+    await this.userModel.findByIdAndUpdate(user?.id, {
+      achievedGoalsCurrentYear,
+      empSignature,
+      setNextReviewGoal,
+    });
+
     const data = (
-      await this.evaluationModel.create(createEvaluationDto)
+      await this.evaluationModel.create({
+        user: { ...restUserProps },
+        ...evals,
+      })
     ).toJSON();
+
     return { data, message: 'Evaluation created successfully.' };
   }
 
