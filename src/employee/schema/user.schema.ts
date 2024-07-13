@@ -32,6 +32,15 @@ export class User {
 
   @Prop({ default: null })
   deletedAt: Date;
+
+  @Prop({ required: false, type: String })
+  achievedGoalsCurrentYear: string;
+
+  @Prop({ required: false, type: String })
+  setNextReviewGoal: string;
+
+  @Prop({ required: false, type: String })
+  empSignature: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

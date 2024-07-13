@@ -1,18 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsArray,
-  IsEmail,
-  IsEnum,
   IsMongoId,
   IsNotEmpty,
   IsOptional,
-  IsPhoneNumber,
   IsString,
-  IsUrl,
-  ValidateIf,
   ValidateNested,
 } from 'class-validator';
-import { Type } from 'class-transformer';
+
 export class ManagerDto {
   @ApiProperty()
   @IsMongoId()
@@ -59,4 +53,19 @@ export class CreateUserDto {
   @ValidateNested({ each: true })
   @IsOptional()
   manager: ManagerDto;
+
+  @ApiProperty({ example: 'Goals....' })
+  @IsString()
+  @IsOptional()
+  achievedGoalsCurrentYear?: string;
+
+  @ApiProperty({ example: 'Next Goals....' })
+  @IsString()
+  @IsOptional()
+  setNextReviewGoal?: string;
+
+  @ApiProperty({ example: 'Emp signature' })
+  @IsString()
+  @IsOptional()
+  empSignature?: string;
 }
