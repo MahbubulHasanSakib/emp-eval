@@ -19,6 +19,21 @@ class UserDto {
   @IsString()
   @ApiProperty({ example: 'John Doe', description: 'User name' })
   name: string;
+
+  @ApiProperty({ example: 'Goals....' })
+  @IsString()
+  @IsOptional()
+  achievedGoalsCurrentYear?: string;
+
+  @ApiProperty({ example: 'Next Goals....' })
+  @IsString()
+  @IsOptional()
+  setNextReviewGoal?: string;
+
+  @ApiProperty({ example: 'Emp signature' })
+  @IsString()
+  @IsOptional()
+  empSignature?: string;
 }
 
 // Rating DTO
