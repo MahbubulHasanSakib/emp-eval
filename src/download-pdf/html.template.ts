@@ -55,6 +55,9 @@ const generatePage1 = ({
   date,
   reviewPeriod,
   ques,
+  achievedGoalsCurrentYear,
+  setNextReviewGoal,
+  empSignature,
 
   // page 2 data
   achievedGoals,
@@ -141,7 +144,18 @@ const generatePage1 = ({
             </tr>
             <tr class="h-[300px]">
               <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
-                
+              ${
+                setNextReviewGoal &&
+                setNextReviewGoal?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? setNextReviewGoal
+                      ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                      ?.map((item) => `<p>${item}</p>`)
+                      ?.join('')
+                  : setNextReviewGoal &&
+                    !setNextReviewGoal?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? setNextReviewGoal
+                  : ''
+              }
               </td>
             </tr>
             <tr>
@@ -152,15 +166,17 @@ const generatePage1 = ({
            <tr class="h-[305px]">
               <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
               ${
-                achievedGoals &&
-                achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                  ? achievedGoals
+                achievedGoalsCurrentYear &&
+                achievedGoalsCurrentYear?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                  ? achievedGoalsCurrentYear
                       ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
                       ?.map((item) => `<p>${item}</p>`)
                       ?.join('')
-                  : achievedGoals &&
-                    !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                  ? achievedGoals
+                  : achievedGoalsCurrentYear &&
+                    !achievedGoalsCurrentYear?.match(
+                      /\d+\..*?(?=\d+\.)|\d+\..*/g,
+                    )
+                  ? achievedGoalsCurrentYear
                   : ''
               }
               </td>
@@ -170,7 +186,7 @@ const generatePage1 = ({
                 EMPLOYEE SIGNATURE & DATE
               </td>
                <td colSpan="1" class="border border-black p-2 text-center w-1/2 h-[50px]">
-                
+                <img src="${empSignature}" alt="Employee Signature" style="max-width: 200px;" class="h-[50px]">
               </td>
             </tr>
           </tbody>
@@ -248,17 +264,16 @@ const generatePage1 = ({
             <tr class="h-[300px]">
               <td colSpan="7" class="border border-black p-2 align-top overflow-hidden !text-xs">
                 ${
-                  // achievedGoals &&
-                  // achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                  //   ? achievedGoals
-                  //       ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                  //       ?.map((item) => `<p>${item}</p>`)
-                  //       ?.join('')
-                  //   : achievedGoals &&
-                  //     !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
-                  //   ? achievedGoals
-                  //   : ''
-                  ''
+                  achievedGoals &&
+                  achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                    ? achievedGoals
+                        ?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                        ?.map((item) => `<p>${item}</p>`)
+                        ?.join('')
+                    : achievedGoals &&
+                      !achievedGoals?.match(/\d+\..*?(?=\d+\.)|\d+\..*/g)
+                    ? achievedGoals
+                    : ''
                 }
               </td>
             </tr>
