@@ -108,12 +108,12 @@ export class CreateLineManagerDto {
   })
   trainingRecommendation?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: 'Sales Manager', description: 'Position' })
   position: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: '5%', description: 'Salary Increment' })
   salaryIncrement: string;
@@ -148,12 +148,12 @@ export class CreateCEODto {
   })
   remarks?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: 'CEO', description: 'Position' })
   position: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @ApiProperty({ example: '10%', description: 'Salary Increment' })
   salaryIncrement: string;
